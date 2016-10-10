@@ -1,6 +1,6 @@
 ReturnValue = require 'nanocyte-component-return-value'
 sameType    = require 'same-type'
-
+_           = require 'lodash'
 class Equal extends ReturnValue
 
   onEnvelope: (envelope) =>
@@ -9,6 +9,6 @@ class Equal extends ReturnValue
 
     [typedLeft, typedRight] = sameType [left, right]
 
-    return message if typedLeft == typedRight
+    return message if _.isEqual(typedLeft, typedRight)
 
 module.exports = Equal
